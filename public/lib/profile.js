@@ -51,7 +51,8 @@ function ProfileVM() {
     self.resetForm = function() {
         self.profileForm.name('');
         self.profileForm.about('');
-        //self.profile.sports()
+        self.profileForm.image('');
+        self.profileForm.chosenSports.removeAll();
     };
 
     self.load = function ( url ) {
@@ -64,12 +65,10 @@ function ProfileVM() {
     };
 
     self.submit = function ( url ) {
-        // var profile_form_json = ko.toJSON(self.profileForm);
-        // $.post( url, profile_form_json);
-
         self.profile.name( self.profileForm.name() );
         self.profile.about( self.profileForm.about() );
         self.profile.sports( self.profileForm.chosenSports() );
+        self.resetForm();
     };
 }
 
