@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ko form test</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
+	<script src="./lib/profile.js"></script>
+</head>
+<body>
+	<div>
+		<h1>Profile</h1>
+		<div>
+			<img src="" />
+		</div>
+		<div>
+			<label>Name</label>
+			<strong data-bind="text: profile.name"></strong>
+		</div>
+		<div>
+			<label>About</label>
+			<strong data-bind="text: profile.about"></strong>
+		</div>
+		<ul data-bind="foreach: profile.sports">
+			<li data-bind="text: name"></li>
+		</ul>
+	</div>
+	<br />
+	<div>
+		<h1>Edit profile</h1>
+		<form enctype="multipart/form-data"  data-bind="submit: submit">
+			<div>
+				<label for="name">Name</label>
+				<input id="name" type="text" data-bind="value: profileForm.name" />
+			</div>
+			<div>
+				<label for="about">About</label>
+				<input id="about" type="text" data-bind="value: profileForm.about" />
+			</div>
+			<div>
+				<label for="image">Image</label>
+				<input id="image" type="file" data-bind="event: { change: function() { profileForm.image($element.files[0]) } }" />
+			</div>
+			<div>
+				<div data-bind="foreach: allSports">
+					<input type="checkbox" data-bind="checkedValue: $data, checked: $root.profileForm.chosenSports" />
+					<span data-bind="text: name"></span>
+				</div>
+			</div>
+			<br />
+			<input type="submit" value="Submit" />
+			<input type="submit" value="Cancel" data-bind="click: resetForm"/>
+		</form>
+	</div>
+</body>
+</html>
