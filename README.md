@@ -6,7 +6,7 @@ Form example using knockoutjs.
 The viewmodel takes a url_map as input.
 It is supposed to contain the url for the loading of the profile, the saving and the uploading of profile pic.
 
-Recent problems
+Issue faced
 ==============
 
 Jquery post can't send images.
